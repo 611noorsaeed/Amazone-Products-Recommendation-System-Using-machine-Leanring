@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Product Recommendation</title>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Abalone Age Prediction</title>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+        crossorigin="anonymous">
+</head>
+<body style="background:black;color:white">
+
+<!--===========================================-->
+<div class="container my-3 mt-3">
+       <h1 class="text-center my-4">Amazon Products Recommendation</h1>
+    <form action="/predict" method="post">
+        <div class="form-group">
+            <label for="text">Enter Product name</label>
+            <input type="text" class="form-control" id="query" name="query">
+        </div>
+        <button type="submit" class="btn btn-primary">get recommendation</button>
+    </form>
+
+
+<div class="row my-3 mt-3">
+	{% for product in products.itertuples() %}
+    <div class="col-md-4">
+        <div class="card mb-4">
+            <div class="card-body" style="color:black">
+                <img  src="{{ url_for('static',filename='img.jpg') }}" class="card-img-top" alt="{{ product['Title'] }}">
+                <h5 class="card-title">Title: {{ product['Title'] }}</h5>
+                <p class="card-text">Category: {{ product['Category'] }}</p>
+            </div>
+        </div>
+    </div>
+	{% endfor %}
+</div>
+
+
+
+
+</div>
+</body>
+</html>
